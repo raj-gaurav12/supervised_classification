@@ -1,12 +1,12 @@
 # paths
-train_data_path = '/Users/raj2.gaurav/Desktop/Git/Causal_Model/05. Training Data/Pre_Processed_Causl_Data.pickle'
-data_hygeine_path= f'/Users/raj2.gaurav/Desktop/Git/Causal_Model/07. Model/Data/Hygeine_Report'
+train_data_path = '/Users/raj2.gaurav/Desktop/supervised_classification/05. Training Data/Pre_Processed_Causl_Data.pickle'
+data_hygeine_path= f'/Users/raj2.gaurav/Desktop/supervised_classification/07. Model/Data/Hygeine_Report'
 data_hygeibe_report_file= data_hygeine_path + '/Model_Reports.xlsx'
-model_hygeine_path="f'/Users/raj2.gaurav/Desktop/Git/Causal_Model/07. Model/{model_name}/Data/Hygeine_Report'"
-model_hygeine_report_file="f'/Users/raj2.gaurav/Desktop/Git/Causal_Model/07. Model/{model_name}/Data/Hygeine_Report/{model_name}_Reports.xlsx'"
-plot_path="f'/Users/raj2.gaurav/Desktop/Git/Causal_Model/07. Model/{model_name}/Model_Results/Accuarcy'"
-plot_soruce_path='/Users/raj2.gaurav/Desktop/Git/Causal_Model/08. SRC'
-save_model_path="f'/Users/raj2.gaurav/Desktop/Git/Causal_Model/07. Model/{model_name}/Model_Results/Model_Objects'"
+model_hygeine_path="f'/Users/raj2.gaurav/Desktop/supervised_classification/07. Model/{model_name}/Data/Hygeine_Report'"
+model_hygeine_report_file="f'/Users/raj2.gaurav/Desktop/supervised_classification/07. Model/{model_name}/Data/Hygeine_Report/{model_name}_Reports.xlsx'"
+plot_path="f'/Users/raj2.gaurav/Desktop/supervised_classification/07. Model/{model_name}/Model_Results/Accuarcy'"
+plot_soruce_path='/Users/raj2.gaurav/Desktop/supervised_classification/08. SRC'
+save_model_path="f'/Users/raj2.gaurav/Desktop/supervised_classification/07. Model/{model_name}/Model_Results/Model_Objects'"
 
 
 ### Data Hyegine Report Sheet Name
@@ -27,10 +27,9 @@ model_hygeibe_report_file_sheet3= 'Model Hyperparameters'
 
 
 # transformation
-Target = 'Target_Variable'
+Target = 'Credit_Score'
 Train_size = 0.7 # between 0.0 to 1.0
-Ignore_features = ['context_environment_Mobile','entity_cell_id','entity_geohash','data_date',\
-                'last_rrc_measurement_earfcn_bucketed','p95_pucch_sinr','context_environment_Indoor','qci_9_tp']
+Ignore_features = ['ID','Customer_ID','Month','Name','SSN']
 Preprocess = True
 Imputation_type = 'simple'
 numeric_imputation = 'mean' # can be drop, mean, median, mode, knn, int
@@ -66,7 +65,7 @@ lightgbm	Light Gradient Boosting Machine
 dummy	Dummy Classifier'''
 
 # Comapre Models
-models = ['lr','dt','svm','rf','ada','gbc','lightgbm']
+models = ['lr','dt','rf','ada','lightgbm']
 
 #Create Model
 fold_n=5
@@ -87,22 +86,21 @@ plot_format=(".png",".jpg",".jpeg")
 
 ## Model Sve Path
 
-model_save_path= f'/Users/raj2.gaurav/Desktop/Git/Causal_Model/07. Model/{models[0]}'
+model_save_path= f'/Users/raj2.gaurav/Desktop/supervised_classification/07. Model/{models[0]}'
 
 # scoring data path
-scoring_data_path = '/Users/raj2.gaurav/Desktop/Git/Causal_Model/06. Inference Data/Scoring_dataset.pickle'
+scoring_data_path = '/Users/raj2.gaurav/Desktop/supervised_classification/06. Inference Data/Scoring_dataset.pickle'
 
 
 ## Model Object Path
-model_obj= 'Light Gradient Boosting Machine'
-model_object_path= f'/Users/raj2.gaurav/Desktop/Git/Causal_Model/07. Model/{model_obj}/Model_Results/Model_Objects/lightgbm'
+model_obj= 'rf'
+model_object_path= f'/Users/raj2.gaurav/Desktop/supervised_classification/07. Model/{model_obj}/Model_Results/Model_Objects/{model_obj}'
 
 ##Prediction Result
-prediction_path=f'/Users/raj2.gaurav/Desktop/Git/Causal_Model/07. Model/{model_obj}/Prediction_Results/'
-prediction_path_file = f'/Users/raj2.gaurav/Desktop/Git/Causal_Model/07. Model/{model_obj}/Prediction_Results/{model_obj}_Prediction.csv'
+prediction_path=f'/Users/raj2.gaurav/Desktop/supervised_classification/07. Model/{model_obj}/Prediction_Results/'
+prediction_path_file = f'/Users/raj2.gaurav/Desktop/supervised_classification/07. Model/{model_obj}/Prediction_Results/{model_obj}_Prediction.csv'
 
 
 
 # columns to be drop Inference
-Ignore_features_inference = ['context_environment_Mobile','entity_cell_id','entity_geohash','data_date',
-                'last_rrc_measurement_earfcn_bucketed','p95_pucch_sinr','context_environment_Indoor','qci_9_tp','Target_Variable']
+Ignore_features_inference = ['ID','Customer_ID','Month','Name','SSN']
